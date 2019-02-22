@@ -11,6 +11,8 @@ export default class StackOutputFile {
     switch (ext.toUpperCase()) {
       case 'JSON':
         return JSON.stringify(data, null, 2)
+      case 'JS':
+        return 'export default ' + JSON.stringify(data, null, 2) + ';'
       case 'TOML':
         return require('tomlify-j0.4')(data, null, 0)
       case 'YAML':

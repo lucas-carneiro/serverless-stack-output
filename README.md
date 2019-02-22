@@ -5,30 +5,30 @@
 [![CircleCI](https://img.shields.io/circleci/project/github/sbstjn/serverless-stack-output.svg)](https://circleci.com/gh/sbstjn/serverless-stack-output)
 [![Coveralls](https://img.shields.io/coveralls/sbstjn/serverless-stack-output.svg)](https://coveralls.io/github/sbstjn/serverless-stack-output)
 
-A [serverless](https://serverless.com) plugin to store output from your AWS CloudFormation Stack in JSON/YAML/TOML files, or to pass the output to a JavaScript function for further processing.
+A [serverless](https://serverless.com) plugin to store output from your AWS CloudFormation Stack in JSON/JS/YAML/TOML files, or to pass the output to a JavaScript function for further processing.
 
 ## Usage
 
 ### Install
 
 ```bash
-$ > yarn add serverless-stack-output
+$ > yarn add @lucas-carneiro/serverless-stack-output
 ```
 
 ```bash
-$ > npm install serverless-stack-output
+$ > npm install @lucas-carneiro/serverless-stack-output
 ```
 
 ### Configuration
 
 ```yaml
 plugins:
-  - serverless-stack-output
+  - '@lucas-carneiro/serverless-stack-output' # Quotes are required
 
 custom:
   output:
     handler: scripts/output.handler # Same syntax as you already know
-    file: .build/stack.toml # toml, yaml, yml, and json format is available
+    file: .build/stack.toml # toml, yaml, yml, json and js format is available
 ```
 
 ### Handler
@@ -45,7 +45,7 @@ module.exports = { handler }
 
 ### File Formats
 
-Just name your file with a `.json`, `.toml`, `.yaml`, or `.yml` extension, and the plugin will take care of formatting your output. Please make sure the location where you want to save the file exists!
+Just name your file with a `.json`, `.js`, `.toml`, `.yaml`, or `.yml` extension, and the plugin will take care of formatting your output. Please make sure the location where you want to save the file exists!
 
 ## License
 
@@ -161,4 +161,17 @@ ServerlessDeploymentBucketName: sls-stack-output-example-serverlessdeploymentbuc
   "ServiceEndpoint": "https://APIGatewayID.execute-api.us-east-1.amazonaws.com/dev",
   "ServerlessDeploymentBucketName": "sls-stack-output-example-serverlessdeploymentbuck-BucketID"
 }
+```
+
+#### JS
+
+```js
+export default {
+  "ExampleUserSecret": "YourUserSecretKey",
+  "ExampleUserKey": "YourUserAccessKey",
+  "ExampleLambdaFunctionQualifiedArn": "arn:aws:lambda:us-east-1:AccountID:function:sls-stack-output-example-dev-example:9",
+  "ExampleStaticValue": "example-static-value",
+  "ServiceEndpoint": "https://APIGatewayID.execute-api.us-east-1.amazonaws.com/dev",
+  "ServerlessDeploymentBucketName": "sls-stack-output-example-serverlessdeploymentbuck-BucketID"
+};
 ```
