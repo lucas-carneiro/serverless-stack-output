@@ -1,6 +1,6 @@
 {
   "name": "@lucas.carneiro/serverless-stack-output",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Serverless plugin to process AWS CloudFormation Stack Output",
   "license": "MIT",
   "author": "Lucas Carneiro <lucas.rod.carneiro@gmail.com>",
